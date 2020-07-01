@@ -5,15 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F57C00"
     tools:context=".SplashActivity">
 
 
-    <TextView
+    <ImageView
+        android:id="@+id/image_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Splash Screen is working"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginVertical="120dp"
+        android:layout_marginHorizontal="80dp"
+        android:contentDescription="@string/image_clipart" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bon_appetit"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingHorizontal="50dp"
+        android:paddingBottom="130dp"
+        android:fontFamily="cursive"
+        android:textColor="#2F4858"
+        android:textSize="50sp"
+        />
 
 </LinearLayout>
