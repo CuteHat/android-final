@@ -1,5 +1,6 @@
 package ge.btu.android_final
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -18,6 +19,11 @@ class RegisterActivity : AppCompatActivity() {
         registerButton.setOnClickListener {
             registerHandler()
         }
+
+        alreadyHaveAccountText.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun registerHandler() {
@@ -34,6 +40,10 @@ class RegisterActivity : AppCompatActivity() {
                 if (!it.isSuccessful) return@addOnCompleteListener
 
                 Toast.makeText(this, "რეგისტრაცია წარმატებულია", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "მოხდა შეცდომა", Toast.LENGTH_SHORT).show()

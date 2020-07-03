@@ -19,6 +19,10 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             loginHandler()
         }
+
+        backToRegisterText.setOnClickListener {
+            finish()
+        }
     }
 
     private fun loginHandler() {
