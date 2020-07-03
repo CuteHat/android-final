@@ -53,7 +53,6 @@ class DishesRecyclerAdapter(clickListener: DishItemOnClickListener) :
         fun bind(dish: Data) {
             itemView.text_dish.text = dish.dishnameGe
             val requestOptions = RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
             Glide.with(itemView.context)
