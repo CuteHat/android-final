@@ -1,9 +1,13 @@
 package ge.btu.android_final.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.firebase.auth.FirebaseAuth
 import ge.btu.android_final.R
 import ge.btu.android_final.adapter.DishLocationsAdapter
 import ge.btu.android_final.api.DishesEndpoints
@@ -27,6 +31,7 @@ class DishLocationsActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        isUserLoggedIn()
         var item:Data? = intent.getParcelableExtra("dishItem")
         if (item != null) {
             getDishLocations(item.dishnameEn)
@@ -60,5 +65,33 @@ class DishLocationsActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Error Reading JSON", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    private fun isUserLoggedIn() {
+        val uid = FirebaseAuth.getInstance().uid
+        if (uid == null) {
+            val intent = Intent(this, RegisterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.menuSignOut -> {
+                FirebaseAuth.getInstance().signOut()
+                Toast.makeText(this, "თქვენ გახვედით ანგარიშიდან", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

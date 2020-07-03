@@ -38,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun prepareForRedirect() {
         Handler().postDelayed(Runnable {
-            val i = Intent(this@SplashActivity, RegisterActivity::class.java)
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
             finish()
         }, splashTimeOut)
