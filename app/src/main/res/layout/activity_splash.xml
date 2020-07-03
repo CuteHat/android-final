@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F57C00"
-    tools:context=".SplashActivity">
+    tools:context=".activity.SplashActivity">
 
 
     <ImageView
@@ -27,8 +27,8 @@
         android:gravity="center"
         android:paddingHorizontal="50dp"
         android:paddingBottom="130dp"
-        android:fontFamily="cursive"
-        android:textColor="#2F4858"
+        android:textStyle="bold"
+        android:textColor="#FFF"
         android:textSize="50sp"
         />
 
