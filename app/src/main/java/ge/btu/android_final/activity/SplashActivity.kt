@@ -1,4 +1,4 @@
-package ge.btu.android_final
+package ge.btu.android_final.activity
 
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import ge.btu.android_final.R
 
 
 class SplashActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun prepareForRedirect() {
         Handler().postDelayed(Runnable {
-            val i = Intent(this@SplashActivity, DishLocationsActivity::class.java)
+            val i = Intent(this@SplashActivity, RegisterActivity::class.java)
             startActivity(i)
             finish()
         }, splashTimeOut)

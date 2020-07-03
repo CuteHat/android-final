@@ -1,8 +1,11 @@
 package ge.btu.android_final.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 class Location(
     @SerializedName("id")
     var id: Int,
@@ -18,4 +21,4 @@ class Location(
     var locationGe: String,
     @SerializedName("last_modify_date")
     var lastModifyDate: Date
-)
+) : Parcelable

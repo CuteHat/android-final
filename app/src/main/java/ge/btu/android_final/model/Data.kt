@@ -1,7 +1,10 @@
 package ge.btu.android_final.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 class Data(
     @SerializedName("id")
     var id: Int,
@@ -13,4 +16,4 @@ class Data(
     var dishImageUrl: String,
     @SerializedName("locations")
     var locations: List<Location>
-)
+) : Parcelable

@@ -1,10 +1,13 @@
-package ge.btu.android_final
+package ge.btu.android_final.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import ge.btu.android_final.DishItemOnClickListener
+import ge.btu.android_final.R
 import ge.btu.android_final.adapter.DishesRecyclerAdapter
 import ge.btu.android_final.api.DishesEndpoints
 import ge.btu.android_final.api.ServiceBuilder
@@ -33,7 +36,14 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     recycler_view.apply {
                         layoutManager = LinearLayoutManager(this@MainActivity)
-                        dishesAdapter = DishesRecyclerAdapter()
+                        dishesAdapter = DishesRecyclerAdapter(object :
+                            DishItemOnClickListener {
+                            override fun clickEventHandler(item: Data) {
+                                val i = Intent(this@MainActivity, DishLocationsActivity::class.java)
+                                i.putExtra("dishItem",item)
+                                startActivity(i)
+                            }
+                        })
                         dishesAdapter.setItems(response.body()?.data as ArrayList<Data>);
                         adapter = dishesAdapter
                     }
